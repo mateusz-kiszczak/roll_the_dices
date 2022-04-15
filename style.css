@@ -1,0 +1,317 @@
+/* GLOBAL */
+* {
+  box-sizing: border-box;
+  font-family: Helvetica, Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+
+/* TYPOGRAPHY */
+html {
+  font-size: 18px;
+}
+
+h1 {
+  color: rgb(255, 255, 255);
+  font-size: 2rem;
+  text-shadow: 2px 2px rgb(0, 0, 0);
+  text-transform: uppercase;
+}
+
+h2 {
+  display: none;
+}
+
+h3 {
+  font-size: 1rem;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+p {
+  color: rgb(176, 74, 18);
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+button {
+  font-size: 1.375rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+
+/* STRUCTURE */
+.result-container {
+  align-items: center;
+  background-color: rgb(217, 255, 217);
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 18px;
+  padding: 1rem;
+}
+
+.result-container > p {
+  text-align: right;
+}
+
+@media only screen and (min-width: 460px) {
+  .result-container {
+    justify-content: flex-start;
+  }
+
+  .result-container > h3 {
+    width: 40%;
+  }
+
+  .result-container > p {
+    text-align: left;
+  }
+}
+
+/* MODULES */
+#roll-button {
+  background-color: rgb(176, 74, 18);
+  border-color: rgb(255, 165, 0);
+  border-radius: 5px;
+  border-width: 3px;
+  color: rgb(255, 223, 163);
+  cursor: pointer;
+  padding: .25rem 1rem;
+}
+
+/* COMPONENTS */
+main {
+  padding: 36px 18px;
+  min-width: 375px;
+  max-width: 590px;
+  margin: 0 auto
+}
+
+/* PAGE */
+body {
+  background-color: rgb(30, 100, 30);
+}
+
+#main-content-container {
+  background-color: rgba(0, 0, 0, .5);
+  border-radius: 8px;
+  margin-top: 18px;
+  padding: 18px;
+}
+
+#dices-section {
+  margin: 36px 0;
+}
+
+#dices-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Dices styles */
+.dice {
+  background-color: rgb(250, 250, 255);
+  border-radius: 5px;
+  box-shadow: 2px 2px rgb(105, 105, 105);
+  height: 50px;
+  width: 50px;
+
+}
+
+.dot {
+  background-color: rgb(0, 0, 0);
+  border-radius: 50%;
+  height: 10px;
+  place-self: center;
+  width: 10px;
+}
+
+/* Dice with one dot */
+.dice1 {
+  display: grid;
+  grid-template: 1fr / 1fr;
+}
+
+/* Dice with two dots */
+.dice2 {
+  display: grid;
+  grid-template: 1fr 1fr / 1fr 1fr;
+  grid-template-areas:
+  "dice2-dot1 ."
+  ". dice2-dot2"
+}
+
+.dice2 > .dot:first-of-type {
+  grid-area: dice2-dot1;
+}
+
+.dice2 > .dot:last-of-type {
+  grid-area: dice2-dot2;
+}
+
+/* Dice with three dots */
+.dice3 {
+  display: grid;
+  grid-template: repeat(1fr, 3) / repeat(1fr, 3);
+  grid-template-areas:
+  "dice3-dot1 . ."
+  ". dice3-dot2 ."
+  ". . dice3-dot3"
+}
+
+.dice3 > .dot:first-of-type {
+  grid-area: dice3-dot1;
+  place-self: end end;
+}
+
+.dice3 > .dot:nth-last-of-type(2) {
+  grid-area: dice3-dot2;
+}
+
+.dice3 > .dot:last-of-type {
+  grid-area: dice3-dot3;
+  place-self: start start;
+}
+
+/* Dice with four dots */
+.dice4 {
+  display: grid;
+  grid-template: 1fr 1fr / 1fr 1fr;
+  grid-template-areas:
+  "dice4-dot1 dice4-dot2"
+  "dice4-dot3 dice4-dot4"
+}
+
+.dice4 > .dot:first-of-type {
+  grid-area: dice4-dot1;
+}
+
+.dice4 > .dot:nth-of-type(2) {
+  grid-area: dice4-dot2;
+}
+
+.dice4 > .dot:nth-of-type(3) {
+  grid-area: dice4-dot3;
+}
+
+.dice4 > .dot:last-of-type {
+  grid-area: dice4-dot4;
+}
+
+/* Dice with five dots */
+.dice5 {
+  display: grid;
+  grid-template: repeat(1fr, 3) / repeat(1fr, 3);
+  grid-template-areas:
+  "dice5-dot1 . dice5-dot2"
+  ". dice5-dot3 ."
+  "dice5-dot4 . dice5-dot5"
+}
+
+.dice5 > .dot:first-of-type {
+  grid-area: dice5-dot1;
+  place-self: end end;
+}
+
+.dice5 > .dot:nth-of-type(2) {
+  grid-area: dice5-dot2;
+  place-self: end start;
+}
+
+.dice5 > .dot:nth-of-type(3) {
+  grid-area: dice5-dot3;
+}
+
+.dice5 > .dot:nth-of-type(4) {
+  grid-area: dice5-dot4;
+  place-self: start end;
+}
+
+.dice5 > .dot:last-of-type {
+  grid-area: dice5-dot5;
+  place-self: start start;
+}
+
+/* Dice with six dots */
+.dice6 {
+  display: grid;
+  grid-template: repeat(1fr, 3) / repeat(1fr, 2);
+  grid-template-areas:
+  "dice6-dot1 dice6-dot2"
+  "dice6-dot3 dice6-dot4"
+  "dice6-dot5 dice6-dot6"
+}
+
+.dice6 > .dot:first-of-type {
+  grid-area: dice6-dot1;
+  place-self: end center;
+}
+
+.dice6 > .dot:nth-of-type(2) {
+  grid-area: dice6-dot2;
+  place-self: end center;
+}
+
+.dice6 > .dot:nth-of-type(3) {
+  grid-area: dice6-dot3;
+}
+
+.dice6 > .dot:nth-of-type(4) {
+  grid-area: dice6-dot4;
+}
+
+.dice6 > .dot:nth-of-type(5) {
+  grid-area: dice6-dot5;
+  place-self: start center;
+}
+
+.dice6 > .dot:last-of-type {
+  grid-area: dice6-dot6;
+  place-self: start center;
+}
+
+@media only screen and (min-width: 440px) {
+  /* Dices styles */
+  .dice {
+    height: 60px;
+    width: 60px;
+    box-shadow: 3px 3px rgb(105, 105, 105);
+  }
+
+  .dot {
+    height: 12px;
+    width: 12px;
+  }
+}
+
+@media only screen and (min-width: 510px) {
+  /* Dices styles */
+  .dice {
+    height: 70px;
+    width: 70px;
+    box-shadow: 3px 3px rgb(105, 105, 105);
+  }
+
+  .dot {
+    height: 14px;
+    width: 14px;
+  }
+}
+
+@media only screen and (min-width: 580px) {
+  /* Dices styles */
+  .dice {
+    height: 80px;
+    width: 80px;
+    box-shadow: 4px 4px rgb(105, 105, 105);
+  }
+
+  .dot {
+    height: 15px;
+    width: 15px;
+  }
+}
